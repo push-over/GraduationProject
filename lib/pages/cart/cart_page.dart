@@ -9,7 +9,9 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('购物车'),
+      body: Center(
+        child: Text('购物车'),
+      ),
     );
   }
 }

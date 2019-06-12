@@ -10,9 +10,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: "毕业设计",
         debugShowCheckedModeBanner: false,
-//        theme: ThemeData(
-//          primaryColor: Colors.pink
-//        ),
+        theme: ThemeData(
+          primaryColor: Color.fromRGBO(0, 169, 172, 1),
+        ),
         home: IndexPage(),
       ),
     );
