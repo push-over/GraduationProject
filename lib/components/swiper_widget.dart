@@ -16,7 +16,7 @@ class SwiperDiy extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return Image.network(
               "${swiperDataList[index]['image']}",
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             );
           },
           itemCount: swiperDataList.length,
