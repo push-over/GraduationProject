@@ -72,7 +72,7 @@ class _TopNavigatorState extends State<TopNavigator> {
       widget.navigatorDataList.removeRange(8, widget.navigatorDataList.length);
     }
     return Container(
-      height: ScreenUtil.getInstance().setHeight(218),
+      height: ScreenUtil.getInstance().setHeight(200),
       child: GridView.count(
         crossAxisCount: 4,
         // padding: EdgeInsets.all(ScreenUtil.getInstance().setWidth(30)),

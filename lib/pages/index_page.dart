@@ -27,7 +27,7 @@ class _IndexPageState extends State<IndexPage> {
     MemberPage()
   ];
 
-  int _currentIndex = 0;
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +36,16 @@ class _IndexPageState extends State<IndexPage> {
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         items: bottomTabs,
         onTap: (index) {
           setState(() {
-            _currentIndex = index;
+            currentIndex = index;
           });
         },
       ),
       body: IndexedStack(
-        index: _currentIndex,
+        index: currentIndex,
         children: tabBodies,
       ),
     );
