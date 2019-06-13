@@ -18,15 +18,21 @@ class _TopNavigatorState extends State<TopNavigator> {
         topNavigatorPage = Stack(
           alignment: const Alignment(0.0, 0.6),
           children: <Widget>[
-            Image.asset(
-              'lib/assets/images/selected.png',
-              fit: BoxFit.cover,
-              width: ScreenUtil.getInstance().setWidth(150),
-              height: ScreenUtil.getInstance().setHeight(64),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(3),
+              child: Image.asset(
+                'lib/assets/images/selected.png',
+                fit: BoxFit.cover,
+                width: ScreenUtil.getInstance().setWidth(150),
+                height: ScreenUtil.getInstance().setHeight(64),
+              ),
             ),
             Container(
               alignment: Alignment.center,
               height: ScreenUtil.getInstance().setHeight(64),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3),
+              ),
               child: Text(
                 item['mallCategoryName'],
                 style: TextStyle(
@@ -43,7 +49,10 @@ class _TopNavigatorState extends State<TopNavigator> {
         topNavigatorPage = Container(
           alignment: Alignment.center,
           height: ScreenUtil.getInstance().setHeight(64),
-          color: Color.fromRGBO(238, 238, 238, 1),
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(238, 238, 238, 1),
+            borderRadius: BorderRadius.circular(3),
+          ),
           child: Text(
             item['mallCategoryName'],
             style: TextStyle(

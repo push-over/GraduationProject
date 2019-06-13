@@ -26,6 +26,7 @@ dependencies:
   dio: ^2.1.7
   flutter_swiper: ^1.1.6
   flutter_screenutil: ^0.5.2
+  flutter_easyrefresh: ^1.2.7
 
 dev_dependencies:
   flutter_test:

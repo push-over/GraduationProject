@@ -20,7 +20,16 @@ class _GoodsListState extends State<GoodsList> {
           child: Container(
             width: ScreenUtil.getInstance().setWidth(336),
             height: ScreenUtil.getInstance().setHeight(544),
-            color: Colors.white,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black12,
+                    offset: Offset(2.0, 2.0),
+                    blurRadius: 4.0)
+              ],
+            ),
             margin: EdgeInsets.only(
               bottom: ScreenUtil.getInstance().setHeight(19),
             ),
@@ -30,11 +39,17 @@ class _GoodsListState extends State<GoodsList> {
                   Stack(
                     alignment: AlignmentDirectional.bottomEnd,
                     children: <Widget>[
-                      Image.network(
-                        val['image'],
-                        width: ScreenUtil.getInstance().setWidth(336),
-                        height: ScreenUtil.getInstance().setHeight(336),
-                        fit: BoxFit.cover,
+                      ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(5),
+                          topRight: Radius.circular(5),
+                        ),
+                        child: Image.network(
+                          val['image'],
+                          width: ScreenUtil.getInstance().setWidth(336),
+                          height: ScreenUtil.getInstance().setHeight(336),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       InkWell(
                         child: Image.asset(
@@ -88,6 +103,7 @@ class _GoodsListState extends State<GoodsList> {
                         style: TextStyle(
                           color: Color.fromRGBO(235, 83, 74, 1),
                           fontSize: ScreenUtil.getInstance().setSp(36),
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],

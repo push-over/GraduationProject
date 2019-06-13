@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_graduation/pages/home/goods_list.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'dart:convert';
 import 'top_navigator.dart';
 import '../../components/swiper_widget.dart';
@@ -16,8 +17,16 @@ class _HomePageState extends State<HomePage>
   int page = 1;
   List<Map> goodsDataList = [];
 
+  GlobalKey<RefreshHeaderState> _headerKey =
+      new GlobalKey<RefreshHeaderState>();
+  GlobalKey<EasyRefreshState> _easyRefreshKey =
+      new GlobalKey<EasyRefreshState>();
+  GlobalKey<RefreshFooterState> _footerKey =
+      new GlobalKey<RefreshFooterState>();
+
   void _getGoods() {
-    request('homePageBelowConten', formData: page).then((val) {
+    var formPage = {'page': page};
+    request('homePageBelowConten', formData: formPage).then((val) {
       var data = json.decode(val.toString());
       List<Map> newGoodsList = (data['data'] as List).cast();
       setState(() {
@@ -40,7 +49,7 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
+      backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
       appBar: AppBar(
         title: TextFileWidget(),
       ),
@@ -53,14 +62,36 @@ class _HomePageState extends State<HomePage>
             List<Map> swiperDataList = (data['data']['slides'] as List).cast();
             List<Map> navigatorDataList =
                 (data['data']['category'] as List).cast();
-            return SingleChildScrollView(
-              child: Column(
+            return EasyRefresh(
+              refreshHeader: ClassicsHeader(
+                key: _headerKey,
+                bgColor: Colors.white,
+                textColor: Colors.black,
+                moreInfoColor: Colors.black,
+              ),
+              refreshFooter: ClassicsFooter(
+                key: _footerKey,
+                bgColor: Colors.white,
+                textColor: Colors.black,
+                moreInfoColor: Colors.black,
+              ),
+              child: ListView(
                 children: <Widget>[
-                  SwiperWidget(swiperDataList: swiperDataList),
-                  TopNavigator(navigatorDataList: navigatorDataList),
-                  GoodsList(goodsDataList: goodsDataList),
+                  Column(
+                    children: <Widget>[
+                      SwiperWidget(swiperDataList: swiperDataList),
+                      TopNavigator(navigatorDataList: navigatorDataList),
+                      GoodsList(goodsDataList: goodsDataList),
+                    ],
+                  ),
                 ],
               ),
+              onRefresh: () async {
+                await _getGoods();
+              },
+              loadMore: () async {
+                await _getGoods();
+              },
             );
           } else {
             return Center(
