@@ -84,7 +84,7 @@ class _TopNavigatorState extends State<TopNavigator> {
       height: ScreenUtil.getInstance().setHeight(200),
       child: GridView.count(
         crossAxisCount: 4,
-        // padding: EdgeInsets.all(ScreenUtil.getInstance().setWidth(30)),
+        physics: NeverScrollableScrollPhysics(),
         padding: EdgeInsets.only(
           top: ScreenUtil.getInstance().setHeight(10),
           left: ScreenUtil.getInstance().setWidth(30),
