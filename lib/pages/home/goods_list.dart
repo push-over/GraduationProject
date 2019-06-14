@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../detail/goods_detail_page.dart';
 
 class GoodsList extends StatefulWidget {
   List<Map> goodsDataList = [];
@@ -15,7 +16,12 @@ class _GoodsListState extends State<GoodsList> {
       List<Widget> listWidget = widget.goodsDataList.map((val) {
         return InkWell(
           onTap: () {
-            print('点击了商品');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => GoodsDetailPage(goodsData: val),
+              ),
+            );
           },
           child: Container(
             width: ScreenUtil.getInstance().setWidth(336),
@@ -63,9 +69,10 @@ class _GoodsListState extends State<GoodsList> {
                     ],
                   ),
                   Container(
+                    alignment: Alignment.centerLeft,
                     height: ScreenUtil.getInstance().setHeight(84),
                     child: Text(
-                      'dfdsf${val['name']}',
+                      '${val['name']}',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
@@ -81,7 +88,8 @@ class _GoodsListState extends State<GoodsList> {
                       Container(
                         padding: EdgeInsets.only(left: 2, right: 2),
                         margin: EdgeInsets.only(
-                            top: ScreenUtil.getInstance().setWidth(25)),
+                          top: ScreenUtil.getInstance().setWidth(25),
+                        ),
                         height: ScreenUtil.getInstance().setHeight(37),
                         color: Color.fromRGBO(0, 169, 172, 0.3),
                         child: Text(

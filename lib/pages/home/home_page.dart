@@ -168,7 +168,7 @@ class SwiperWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(
               ScreenUtil.getInstance().setWidth(10),
             ),
-            child: SwiperDiy(swiperDataList: swiperDataList),
+            child: SwiperDiy(swiperDataList: swiperDataList, heightNumber: 260,),
           ),
         )
       ],
