@@ -8,7 +8,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="flutter_graduation"
+        android:label="毕业设计"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
