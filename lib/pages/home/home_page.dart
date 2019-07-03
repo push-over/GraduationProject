@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage>
       backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
       appBar: AppBar(
         title: TextFileWidget(),
+        elevation: 0.0,
       ),
       body: FutureBuilder(
         future: request('homePageContext',
